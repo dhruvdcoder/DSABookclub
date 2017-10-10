@@ -31,9 +31,14 @@ class Set
            // constructor
            SetNode(const ObjectT& data):m_data(data){}
            //SetNode(ObjectT&& data):m_data(data){}
+           //
+           //destructor
+           ~SetNode()=default;
 
            // helper functions
            bool isLeaf() { return (m_left_child.get() || m_right_child.get());}
+           bool hasLeft() { return m_left_child.get(); }
+           bool hasRight() { return m_right_child.get(); }
     };
     unique_ptr<SetNode> m_root;
     // keeping it un-assignable and non-copy constructible
@@ -43,6 +48,7 @@ class Set
    private:
     // helper functions
     bool insertAt(SetNode<ObjectT>& node, const ObjectT& obj);
+    ObjectT* findFrom(SetNode<ObjectT>& node, const ObjectT& obj);
     //bool insertAt(SetNode<ObjectT>& node, ObjectT&& obj);
 
    public:
