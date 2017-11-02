@@ -1,4 +1,4 @@
-#ifndef _BINARYSEARCHTREE_H_
+#ifndef _BINARYSEARCHTREE_H_ 
 #define _BINARYSEARCHTREE_H_
 #include <memory>
 /** @file Implements classes for set as a binay search tree 
@@ -20,7 +20,7 @@ namespace DSA {
 template<typename ObjectT>
 class BinarySearchTree 
 {
-    struct Node  
+    struct Node 
     {
         public:
            ObjectT m_data;

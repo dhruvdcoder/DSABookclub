@@ -1,6 +1,5 @@
-#ifndef _SET_H_
-#define _SET_H_
-
+#ifndef _BINARYSEARCHTREE_H_ 
+#define _BINARYSEARCHTREE_H_
 #include <memory>
 /** @file Implements classes for set as a binay search tree 
  * @todo 1. Add iterator class for the set and use that as the return type for insert, find etc.
@@ -19,21 +18,21 @@ namespace DSA {
  * 
  */
 template<typename ObjectT>
-class Set 
+class BinarySearchTree 
 {
-    struct SetNode 
+    struct Node 
     {
         public:
            ObjectT m_data;
-           std::unique_ptr<SetNode> m_left_child;
-           std::unique_ptr<SetNode> m_right_child;
+           std::unique_ptr<Node> m_left_child;
+           std::unique_ptr<Node> m_right_child;
 
            // constructor
-           SetNode(const ObjectT& data):m_data(data){}
-           //SetNode(ObjectT&& data):m_data(data){}
+           Node(const ObjectT& data):m_data(data){}
+           //Node(ObjectT&& data):m_data(data){}
            //
            //destructor
-           ~SetNode()=default;
+           ~Node()=default;
 
            // helper functions
            bool isLeaf() { return !(m_left_child.get() || m_right_child.get());}
@@ -42,19 +41,19 @@ class Set
            /* pre-order traversing print */
            void print(int level=0);
     };
-    std::unique_ptr<SetNode> m_root;
+    std::unique_ptr<Node> m_root;
     // keeping it un-assignable and non-copy constructible
-    Set(const Set&);
-    const Set& operator=(const Set&);
+    BinarySearchTree(const BinarySearchTree&);
+    const BinarySearchTree& operator=(const BinarySearchTree&);
 
    private:
     // helper functions
-    bool insertAt(SetNode& node, const ObjectT& obj);
-    const ObjectT* findFrom(SetNode& node, const ObjectT& obj) const;
-    //bool insertAt(SetNode<ObjectT>& node, ObjectT&& obj);
+    bool insertAt(Node& node, const ObjectT& obj);
+    const ObjectT* findFrom(Node& node, const ObjectT& obj) const;
+    //bool insertAt(Node<ObjectT>& node, ObjectT&& obj);
 
    public:
-    Set()=default;
+    BinarySearchTree()=default;
     bool insert(const ObjectT& data); // copy insert
     //bool insert(const ObjectT&& data); // move insert
     
